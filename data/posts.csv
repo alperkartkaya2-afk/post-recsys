@@ -1,0 +1,14 @@
+post_id,theme,text,image_path
+p001,nature,Warm sunset over coastal mountains with soft orange light.,images/sunset.jpg
+p002,nature,Pine forest trail after rain with mist between tall trees.,images/forest.jpg
+p003,art,Pastel abstract shapes arranged in a minimalist composition.,images/abstract.jpg
+p004,tech,Review of the latest smartphone camera and night mode performance.,
+p005,tech,Notebook of coding productivity tips and keyboard shortcuts.,
+p006,art,,images/graffiti.jpg
+p007,food,,images/bread.jpg
+p008,food,"Fresh veggie bowl with salmon, avocado, and bright toppings.",images/bowl.jpg
+p009,nature,Quiet beach morning with soft waves and pale blue sky.,images/beach.jpg
+p010,nature,High-altitude lake reflecting snowy peaks and alpine sky.,images/alpine.jpg
+p011,art,Geometric mural painted with bold cyan and magenta blocks.,images/mural.jpg
+p012,tech,Mechanical keyboard build log with custom switches and keycaps.,
+p013,food,Stack of pancakes with berries and maple syrup for brunch.,images/pancakes.jpg

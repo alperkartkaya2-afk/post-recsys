@@ -1,0 +1,7 @@
+sentence-transformers>=2.6.0
+transformers>=4.38.0
+torch>=2.1.0
+faiss-cpu>=1.7.4
+pandas>=2.1.0
+pillow>=10.0.0
+numpy>=1.26.0
