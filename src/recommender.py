@@ -64,19 +64,6 @@ def embed_text(posts: pd.DataFrame, text_model: SentenceTransformer) -> Dict[str
     return embeddings
 
 
-def embed_themes(posts: pd.DataFrame, text_model: SentenceTransformer) -> Dict[str, np.ndarray]:
-    """Embed coarse themes so image-only posts still get a language anchor."""
-    themes = sorted(posts["theme"].dropna().unique().tolist())
-    if not themes:
-        return {}
-    encoded = text_model.encode(
-        [f"{theme} content" for theme in themes],
-        convert_to_numpy=True,
-        normalize_embeddings=True,
-    )
-    return dict(zip(themes, encoded))
-
-
 def embed_images(
     posts: pd.DataFrame,
     processor: AutoImageProcessor,
