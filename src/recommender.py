@@ -129,15 +129,12 @@ def fuse_post_embeddings(
     text_embeddings: Dict[str, np.ndarray],
     image_embeddings: Dict[str, np.ndarray],
     projection: np.ndarray,
-    theme_embeddings: Dict[str, np.ndarray],
 ) -> Dict[str, np.ndarray]:
     """Combine text and projected image vectors into one per-post embedding."""
     fused: Dict[str, np.ndarray] = {}
     for _, row in posts.iterrows():
         post_id = row["post_id"]
         text_vec = text_embeddings.get(post_id)
-        if text_vec is None:
-            text_vec = theme_embeddings.get(row["theme"])
         image_vec = image_embeddings.get(post_id)
 
         if text_vec is None and image_vec is None:
@@ -151,10 +148,7 @@ def fuse_post_embeddings(
         elif text_vec is not None:
             combined = text_vec
         else:
-            # Image-only posts still get a small semantic hint via theme embedding above.
-            combined = 0.4 * l2_normalize((image_vec @ projection).reshape(1, -1))[0]
-            if row["theme"] in theme_embeddings:
-                combined += 0.6 * theme_embeddings[row["theme"]]
+            combined = l2_normalize((image_vec @ projection).reshape(1, -1))[0]
 
         fused[post_id] = l2_normalize(combined.reshape(1, -1))[0]
     return fused
@@ -234,7 +228,6 @@ def demo() -> None:
     text_model, image_processor, image_model = prepare_models(device)
 
     text_embeddings = embed_text(posts, text_model)
-    theme_embeddings = embed_themes(posts, text_model)
     image_embeddings = embed_images(posts, image_processor, image_model, device)
 
     paired_ids = [pid for pid in posts["post_id"] if pid in text_embeddings and pid in image_embeddings]
@@ -247,12 +240,11 @@ def demo() -> None:
         text_embeddings,
         image_embeddings,
         projection,
-        theme_embeddings,
     )
     user_embeddings = build_user_embeddings(likes, post_embeddings)
     index, post_ids = build_faiss_index(post_embeddings)
 
-    random.seed(42)
+    random.seed(26)
     user_id = random.choice(list(user_embeddings.keys()))
     recs = recommend_for_user(user_id, user_embeddings, post_embeddings, likes, index, post_ids, top_k=3)
 
