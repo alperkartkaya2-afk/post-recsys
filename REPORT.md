@@ -184,6 +184,7 @@ Explanations:
 Sample output from the current dataset:
 
 ```
+    ###### all-MiniLM-L6-v2 RESULTS
 User: user_lee
 Previously liked posts:
   - p019 (nature) | text='Hidden waterfall in a mossy canyon with cool mist.' | image=images/p019.jpg
@@ -193,6 +194,60 @@ Recommended posts (cosine similarity):
   - p028 (nature) | image=images/p028.jpg | score=0.692
   - p027 (nature) | image=images/p027.jpg | score=0.672
   - p014 (nature) | text='Snowy ridge hike with bright alpine air and distant peaks.' | image=images/p014.jpg | score=0.535
+```
+
+
+```
+    ###### BGE-M3 RESULTS
+  User: user_lee
+Previously liked posts:
+  - p019 (nature) | text='Hidden waterfall in a mossy canyon with cool mist.' | image=images/p019.jpg
+  - p020 (nature) | text='Wildflower meadow below snow-capped peaks during sunrise.' | image=images/p020.jpg
+
+Recommended posts (cosine similarity):
+  - p028 (nature) | image=images/p028.jpg | score=0.853
+  - p027 (nature) | image=images/p027.jpg | score=0.839
+  - p014 (nature) | text='Snowy ridge hike with bright alpine air and distant peaks.' | image=images/p014.jpg | score=0.700
+```
+
+
+
+```
+
+============================================================
+User: user_anna
+Previously liked posts:
+  - p001 (nature) | text='Warm sunset over coastal mountains with soft orange light.' | image=images/sunset.jpg
+  - p002 (nature) | text='Pine forest trail after rain with mist between tall trees.' | image=images/forest.jpg
+  - p009 (nature) | text='Quiet beach morning with soft waves and pale blue sky.' | image=images/beach.jpg
+  - p014 (nature) | text='Snowy ridge hike with bright alpine air and distant peaks.' | image=images/p014.jpg
+  - p027 (nature) | image=images/p027.jpg
+  - p028 (nature) | image=images/p028.jpg
+  - p029 (nature) | text='Coastal cliffs with rolling fog and crashing waves.' | image=images/p029.jpg
+  - p030 (nature) | text='Pine forest trail lined with moss and filtered light.' | image=images/p030.jpg
+  - p031 (nature) | text='Aurora over a frozen lake with silhouetted pines.' | image=images/p031.jpg
+============================================================
+
+#### Text encoder: bge-m3
+Recommended posts (cosine similarity):
+  - p019 (nature) | text='Hidden waterfall in a mossy canyon with cool mist.' | image=images/p019.jpg | score=0.752
+  - p010 (nature) | text='High-altitude lake reflecting snowy peaks and alpine sky.' | image=images/alpine.jpg | score=0.751
+  - p018 (nature) | text='River delta winding through green wetlands at sunset.' | image=images/p018.jpg | score=0.729
+
+
+#### Text encoder: minilm
+Recommended posts (cosine similarity):
+  - p019 (nature) | text='Hidden waterfall in a mossy canyon with cool mist.' | image=images/p019.jpg | score=0.686
+  - p010 (nature) | text='High-altitude lake reflecting snowy peaks and alpine sky.' | image=images/alpine.jpg | score=0.533
+  - p018 (nature) | text='River delta winding through green wetlands at sunset.' | image=images/p018.jpg | score=0.501
+
+
+#### Text encoder: mpnet
+Recommended posts (cosine similarity):
+  - p018 (nature) | text='River delta winding through green wetlands at sunset.' | image=images/p018.jpg | score=0.830
+  - p010 (nature) | text='High-altitude lake reflecting snowy peaks and alpine sky.' | image=images/alpine.jpg | score=0.814
+  - p020 (nature) | text='Wildflower meadow below snow-capped peaks during sunrise.' | image=images/p020.jpg | score=0.804
+
 ```
 
 ## Why this design is simple and scalable
